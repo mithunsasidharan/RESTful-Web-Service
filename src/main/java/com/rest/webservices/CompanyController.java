@@ -31,8 +31,7 @@ public class CompanyController {
 	public @ResponseBody Company getUser(@PathVariable("companyName") String companyName) {
 		for(Company company : companies)  
 			if(company.getCompanyName().equalsIgnoreCase(companyName)) { 
-				return new Company(company.getCompanyName(), company.getEmployeeStrength(), 
-						company.getFoundingYear(), company.getHeadquarters());
+				return company;
 			}
 		return null;
 	}

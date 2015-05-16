@@ -21,6 +21,7 @@ public class Company {
 	public String getCompanyName() {
 		return companyName;
 	}
+
 	@XmlElement  
 	public void setCompanyName(String companyName) {
 		this.companyName = companyName;
@@ -29,6 +30,7 @@ public class Company {
 	public long getEmployeeStrength() {
 		return employeeStrength;
 	}
+
 	@XmlElement  
 	public void setEmployeeStrength(long employeeStrength) {
 		this.employeeStrength = employeeStrength;
@@ -42,6 +44,7 @@ public class Company {
 	public void setFoundingYear(int foundingYear) {
 		this.foundingYear = foundingYear;
 	}
+
 	public String getHeadquarters() {
 		return headquarters;
 	}
