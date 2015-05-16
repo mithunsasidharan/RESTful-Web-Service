@@ -14,12 +14,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class CompanyController {
 
 	private static final List<Company> companies = new ArrayList<Company>();
+	private static final String DEFAULT_HEADQUARTERS =  "India";
 
 	@RequestMapping(value ="/company", method=RequestMethod.POST)
-	public @ResponseBody String createCompany(@RequestParam("companyName") String companyName, 
+	public @ResponseBody String createCompany(@RequestParam("companyName") final String companyName, 
 			@RequestParam("employeeStrength") long employeeStrength, @RequestParam("foundingYear") int foundingYear,
-			@RequestParam("headquarters") String headquarters) {
-		Company company = new Company(companyName, employeeStrength, foundingYear, headquarters);
+			@RequestParam(required = false) final String headquarters) {
+
+		String headQuarter = headquarters==null ? DEFAULT_HEADQUARTERS: headquarters;
+		Company company = new Company(companyName, employeeStrength, foundingYear, headQuarter);
 		companies.add(company);
 		return "Company has been created !!";
 	}
@@ -28,7 +31,8 @@ public class CompanyController {
 	public @ResponseBody Company getUser(@PathVariable("companyName") String companyName) {
 		for(Company company : companies)  
 			if(company.getCompanyName().equalsIgnoreCase(companyName)) { 
-				return company;
+				return new Company(company.getCompanyName(), company.getEmployeeStrength(), 
+						company.getFoundingYear(), company.getHeadquarters());
 			}
 		return null;
 	}
