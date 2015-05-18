@@ -11,6 +11,9 @@ public class Company {
 	private int foundingYear;
 	private String headquarters;
 
+	public Company(){
+		// For XML conversions to take effect
+	}
 	public Company(String companyName, long empployeeStrength, int foundingYear, String headQuarters) {
 		this.companyName = companyName;
 		this.employeeStrength = empployeeStrength;

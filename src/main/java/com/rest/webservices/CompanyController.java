@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class CompanyController {
 
 	private static final List<Company> companies = new ArrayList<Company>();
-	private static final String DEFAULT_HEADQUARTERS =  "India";
+	private static final String DEFAULT_HEADQUARTERS =  "Unknown";
 
 	@RequestMapping(value ="/company", method=RequestMethod.POST)
 	public @ResponseBody String createCompany(@RequestParam("companyName") final String companyName, 
